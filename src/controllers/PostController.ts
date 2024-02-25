@@ -12,11 +12,11 @@ export default {
 
       const createPost = new CreatePostService(new PostRepository())
 
-      const post = createPost.execute(title, content, userId)
+      const post = await createPost.execute(title, content, userId)
 
       response.json({
         error: false,
-        message: 'Post eliminado com sucesso',
+        message: 'Post registrado com sucesso',
         post,
       })
     } catch (error) {
@@ -85,7 +85,7 @@ export default {
 
       const listPost = new ListPostService(new PostRepository())
 
-      const post = listPost.execute(Number(id))
+      const post = await listPost.execute(Number(id))
 
       if (!post) {
         return response.json({
