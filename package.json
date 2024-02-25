@@ -4,7 +4,7 @@
   "description": "Aprendendo sobre design patterns na prática usando o nodejs, typepscript e prisma",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "ts-node-dev ./src/server.ts"
   },
   "keywords": [],
   "author": "",
