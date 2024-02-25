@@ -45,6 +45,7 @@ export default {
   async updatePosts(request: Request, response: Response) {
     try {
       const { id } = request.params
+      const { title, content } = request.body
 
       const postExist = await prisma.post.findUnique({
         where: { id: Number(id) },
@@ -62,7 +63,10 @@ export default {
         where: {
           id: Number(id),
         },
-        data: request.body,
+        data: {
+          title,
+          content,
+        },
       })
 
       response.json({
