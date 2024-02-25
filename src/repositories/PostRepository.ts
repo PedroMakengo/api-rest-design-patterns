@@ -18,6 +18,16 @@ class PostRepository implements IPostRepository {
 
     return post
   }
+
+  public async list(id: number): Promise<Post> {
+    const post = await prisma.post.findUnique({
+      where: {
+        id: Number(id),
+      },
+    })
+
+    return post
+  }
 }
 
 export default PostRepository

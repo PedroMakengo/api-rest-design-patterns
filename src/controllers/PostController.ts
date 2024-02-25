@@ -3,6 +3,7 @@ import { Request, Response } from 'express'
 import prisma from '../database'
 import CreatePostService from '../service/CreatePostService'
 import PostRepository from '../repositories/PostRepository'
+import ListPostService from '../service/ListPostService'
 
 export default {
   async createPosts(request: Request, response: Response) {
@@ -81,7 +82,10 @@ export default {
   async listPost(request: Request, response: Response) {
     try {
       const { id } = request.params
-      const post = await prisma.post.findUnique({ where: { id: Number(id) } })
+
+      const listPost = new ListPostService(new PostRepository())
+
+      const post = listPost.execute(Number(id))
 
       if (!post) {
         return response.json({
@@ -89,8 +93,8 @@ export default {
           message: 'Error: Post não encontrado',
         })
       }
-      const posts = await prisma.post.findMany()
-      response.json(posts)
+
+      response.json(post)
     } catch (error) {
       return response.json({ error: true, message: error.message })
     }
