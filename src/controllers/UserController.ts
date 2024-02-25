@@ -35,4 +35,13 @@ export default {
       return response.json({ message: error.message })
     }
   },
+
+  async listUsers(request: Request, response: Response) {
+    try {
+      const users = await prisma.user.findMany()
+      response.json(users)
+    } catch (error) {
+      return response.json({ error: true, message: error.message })
+    }
+  },
 }
