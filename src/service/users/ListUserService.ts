@@ -11,6 +11,7 @@ class ListUserService {
 
   public async executeByEmail(email: string) {
     const user = await this.userRepository.listUser(email)
+
     return user
   }
 }
