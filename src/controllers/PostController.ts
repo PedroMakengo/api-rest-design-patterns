@@ -1,9 +1,9 @@
 /* eslint-disable linebreak-style */
 import { Request, Response } from 'express'
 import prisma from '../database'
-import CreatePostService from '../service/CreatePostService'
 import PostRepository from '../repositories/PostRepository'
-import ListPostService from '../service/ListPostService'
+import CreatePostService from '../service/posts/CreatePostService'
+import ListPostService from '../service/posts/ListPostService'
 
 export default {
   async createPosts(request: Request, response: Response) {

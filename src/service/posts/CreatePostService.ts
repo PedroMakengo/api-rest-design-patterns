@@ -1,4 +1,5 @@
-import { IPostRepository } from '../interfaces/IPostRepository'
+import { IPostRepository } from '../../interfaces/IPostRepository'
+
 class CreatePostService {
   constructor(private postRepository: IPostRepository) {}
 
